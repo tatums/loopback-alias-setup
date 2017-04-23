@@ -1,0 +1,25 @@
+#!/bin/bash
+
+TEMP_LOCATION=./com.runlevel1.lo0.10.254.254.254.plist
+DESTINATION=/Library/LaunchDaemons/com.runlevel1.lo0.10.254.254.254.plist
+
+# check to see if dsnmasq is a thing
+if [ $(brew leaves | grep dnsmasq) != dnsmasq ];then
+
+  echo "dsnmasq is not installed! Aborting." 1>&2
+  exit 1;
+
+else
+
+  #1) Install the plist to: /Library/LaunchDaemons/com.runlevel1.lo0.10.254.254.254.plist
+    echo "dowloading plist";
+    curl -o $TEMP_LOCATION https://gist.githubusercontent.com/tatums/9d86ca0c7cb8a0dea8866a9289d25ed3/raw/6ebfeaad555651d3f01b4131824712200bf92d65/com.runlevel1.lo0.10.254.254.254.plist
+    echo "moving plist into place with sudo";
+    sudo mv $TEMP_LOCATION $DESTINATION
+  #2) Set mode: chmod 0644 /Library/LaunchDaemons/com.runlevel1.lo0.10.254.254.254.plist
+    chmod 0644 $DESTINATION
+  #3) Set owner: sudo chown root:wheel /Library/LaunchDaemons/com.runlevel1.lo0.10.254.254.254.plist
+    sudo chown root:wheel $DESTINATION
+  #4) Load: sudo launchctl load /Library/LaunchDaemons/com.runlevel1.lo0.10.254.254.254.plist
+    sudo launchctl load $DESTINATION
+fi
