@@ -13,7 +13,7 @@ else
 
   #1) Install the plist to: /Library/LaunchDaemons/com.runlevel1.lo0.10.254.254.254.plist
     echo "dowloading plist";
-    curl -o $TEMP_LOCATION https://gist.githubusercontent.com/tatums/9d86ca0c7cb8a0dea8866a9289d25ed3/raw/6ebfeaad555651d3f01b4131824712200bf92d65/com.runlevel1.lo0.10.254.254.254.plist
+    curl -o $TEMP_LOCATION https://raw.githubusercontent.com/tatums/loopback-alias-setup/master/com.runlevel1.lo0.10.254.254.254.plist
     echo "moving plist into place with sudo";
     sudo mv $TEMP_LOCATION $DESTINATION
   #2) Set mode: chmod 0644 /Library/LaunchDaemons/com.runlevel1.lo0.10.254.254.254.plist
