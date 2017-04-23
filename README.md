@@ -6,7 +6,7 @@ Creates an alias on the loopback interface (lo0) with the IP 10.254.254.254 on M
 You can manually install or use the install script
 
 ### Install script
-    $ ./install
+    $ curl -fsSL https://raw.githubusercontent.com/tatums/loopback-alias-setup/master/install | bash
 
 #### Manual Installation
 
